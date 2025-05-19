@@ -30,33 +30,27 @@
     </style>
   </head>
   <body>
-    
-    Hello
 
-    <script>
-      function updateThemeByTime() {
-        const now = new Date();
-        const currentMinutes = now.getHours() * 60 + now.getMinutes();
+<div id="modeStatus"></div>
 
-        const lightModeStart = 13 * 60 + 30;
-        const darkModeStart = 13 * 60 + 28;
+<script>
+  function updateThemeByTime() {
+    const now = new Date();
+    const currentMinutes = now.getHours() * 60 + now.getMinutes();
 
-        // Dark mode from 4:20 PM to 6:40 AM
-        const isDarkTime = currentMinutes >= darkModeStart || currentMinutes < lightModeStart;
+    const darkModeEnd = 13 * 60 + 41;
+    const darkModeStart = 13 * 60 + 42;
 
-        if (isDarkTime) {
-          document.documentElement.classList.add('dark-mode');
-        } else {
-          document.documentElement.classList.remove('dark-mode');
-        }
-      }
+    const isDarkTime = currentMinutes >= darkModeStart || currentMinutes < darkModeEnd;
 
-      // Run on page load
-      updateThemeByTime();
+    document.documentElement.classList.toggle('dark-mode', isDarkTime);
+    document.getElementById('modeStatus').textContent = isDarkTime ? 'Dark Mode' : 'Light Mode';
+  }
 
-      // Update every minute
-      setInterval(updateThemeByTime, 1000);
-    </script>
+  updateThemeByTime();
+  setInterval(updateThemeByTime, 1000);
+</script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
   </body>
