@@ -37,8 +37,8 @@
         const now = new Date();
         const currentMinutes = now.getHours() * 60 + now.getMinutes();
 
-        const darkModeStart = 11 * 60 + 57; // 4:20 PM
-        const lightModeStart = 11 * 60 + 10; // 6:40 AM
+        const darkModeStart = 12 * 60 + 7; // 4:20 PM
+        const lightModeStart = 4 * 60 + 10; // 6:40 AM
 
         // Dark mode from 4:20 PM to 6:40 AM
         const isDarkTime = currentMinutes >= darkModeStart || currentMinutes < lightModeStart;
